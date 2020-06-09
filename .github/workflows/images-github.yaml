@@ -1,0 +1,18 @@
+name: Images 2
+on: [push]
+
+jobs:
+  build-and-push:
+    name: Build and push all images
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - uses: docker://docker.io/cilium/image-maker:bc81755ec8f6c5afcb10a416cef73f99a35fee2c
+        name: Run make maker-image
+        env:
+          DOCKER_HUB_PUBLIC_ACCESS_ONLY: true
+          ANY_REGISTRY_USERNAME: errordeveloper
+          ANY_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          entrypoint: make
+          args: maker-image PUSH=true REGISTRIES=docker.pkg.github.com/errordeveloper/repo
