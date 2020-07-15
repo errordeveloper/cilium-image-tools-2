@@ -1,4 +1,4 @@
-name: Images 2
+name: Images test
 on: [push]
 
 jobs:
