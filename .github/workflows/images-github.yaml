@@ -13,7 +13,7 @@ jobs:
           entrypoint: docker
           args: run --privileged linuxkit/binfmt:5d33e7346e79f9c13a73c6952669e47a53b063d4
       - uses: docker://docker.io/cilium/image-maker:3e2ea4f151593908c362307a1de22e68610d955c
-        name: Run make maker-image
+        name: Run make iproute2-image
         env:
           DOCKER_HUB_PUBLIC_ACCESS_ONLY: true
           ANY_REGISTRY_USERNAME: errordeveloper
