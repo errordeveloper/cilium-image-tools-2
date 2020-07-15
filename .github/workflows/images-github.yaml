@@ -8,6 +8,11 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: docker://docker.io/cilium/image-maker:3e2ea4f151593908c362307a1de22e68610d955c
+        name: Register binfmt from multi-platform builds
+        with:
+          entrypoint: docker
+          args: run --privileged linuxkit/binfmt:5d33e7346e79f9c13a73c6952669e47a53b063d4
+      - uses: docker://docker.io/cilium/image-maker:3e2ea4f151593908c362307a1de22e68610d955c
         name: Run make maker-image
         env:
           DOCKER_HUB_PUBLIC_ACCESS_ONLY: true
@@ -15,4 +20,4 @@ jobs:
           ANY_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: make
-          args: maker-image PUSH=true REGISTRIES=docker.pkg.github.com/errordeveloper/cilium-image-tools-2
+          args: iproute2-image PUSH=true REGISTRIES=docker.pkg.github.com/errordeveloper/cilium-image-tools-2
