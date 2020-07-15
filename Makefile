@@ -49,7 +49,7 @@ bpftool-image: .buildx_builder
 	PUSH=$(PUSH) EXPORT=$(EXPORT) TEST=true scripts/build-image.sh cilium-bpftool images/bpftool linux/amd64,linux/arm64 "$$(cat .buildx_builder)" $(REGISTRIES)
 
 iproute2-image: .buildx_builder
-	PUSH=$(PUSH) EXPORT=$(EXPORT) TEST=true scripts/build-image.sh cilium-iproute2 images/iproute2 linux/amd64,linux/arm64 "$$(cat .buildx_builder)" $(REGISTRIES)
+	FORCE=true PUSH=$(PUSH) EXPORT=$(EXPORT) TEST=true scripts/build-image.sh cilium-iproute2 images/iproute2 linux/amd64,linux/arm64 "$$(cat .buildx_builder)" $(REGISTRIES)
 
 llvm-image: .buildx_builder
 	PUSH=$(PUSH) EXPORT=$(EXPORT) TEST=true scripts/build-image.sh cilium-llvm images/llvm linux/amd64,linux/arm64 "$$(cat .buildx_builder)" $(REGISTRIES)
