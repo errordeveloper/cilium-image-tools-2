@@ -15,4 +15,4 @@ jobs:
           ANY_REGISTRY_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
         with:
           entrypoint: make
-          args: maker-image PUSH=true REGISTRIES=docker.pkg.github.com/errordeveloper/cilium-image-tools
+          args: maker-image PUSH=true REGISTRIES=docker.pkg.github.com/errordeveloper/cilium-image-tools-2
